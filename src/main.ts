@@ -8,6 +8,9 @@ async function bootstrap() {
     whitelist: true, // esto hace que se omita cualquier param enviado que no sea valido
     forbidNonWhitelisted: true, // esto devuelve un error si envian algun param inesperado
     transform: true, // esto transforma el payload que recibimos en el request en la clase DTO esperada
+    transformOptions: {
+      enableImplicitConversion: true,
+    },
   }));
   await app.listen(3000);
 }
