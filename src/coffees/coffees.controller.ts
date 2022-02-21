@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
-import { CreateCoffeeDto } from 'src/coffess/dto/create-coffee.dto';
-import { UpdateCoffeeDto } from 'src/coffess/dto/update-coffee.dto';
-import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
+import { CreateCoffeeDto } from '../coffess/dto/create-coffee.dto';
+import { UpdateCoffeeDto } from '../coffess/dto/update-coffee.dto';
+import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { CoffeesService } from './coffees.service';
 
 // nest mapea este string con la url, y así se mapea URL - Controller
