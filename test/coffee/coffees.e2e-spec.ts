@@ -40,9 +40,9 @@ describe('[Feature] Coffees - /coffees', () => {
 
     app = moduleFixture.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({
-      whitelist: true, 
-      forbidNonWhitelisted: true, 
-      transform: true, 
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
       transformOptions: {
         enableImplicitConversion: true,
       }
@@ -108,7 +108,7 @@ describe('[Feature] Coffees - /coffees', () => {
           .expect(HttpStatus.NOT_FOUND);
       })
   });
- 
+
   afterAll(async () => {
     await app.close();
   });

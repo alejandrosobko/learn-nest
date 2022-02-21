@@ -8,7 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    CoffeesModule, 
+    CoffeesModule,
     TypeOrmModule.forRoot({
       type: 'postgres', // type of our database
       host: process.env.DATABASE_HOST,
@@ -16,7 +16,7 @@ import { ConfigModule } from '@nestjs/config';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      autoLoadEntities: true, // models will be loaded automatically 
+      autoLoadEntities: true, // models will be loaded automatically
       synchronize: true, // your entities will be synced with the database(recommended: disable in prod) - cada tabla o col nueva se crea en la DB al prender el server.
     }),
   ],

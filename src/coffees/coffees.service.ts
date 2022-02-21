@@ -17,7 +17,7 @@ export class CoffeesService {
         private readonly flavorRepository: Repository<Flavor>,
         private readonly connection: Connection,
     ) {}
-    
+
     findAll(paginationQuery: PaginationQueryDto) {
         const { limit, offset } = paginationQuery;
         return this.coffeeRepository.find({
@@ -41,7 +41,7 @@ export class CoffeesService {
         const flavors = await Promise.all(
             createCoffeeDto.flavors.map(name => this.preloadFlavorByName(name)),
         );
-      
+
         const coffee = this.coffeeRepository.create({
             ...createCoffeeDto,
             flavors,
@@ -53,7 +53,7 @@ export class CoffeesService {
         const flavors = updateCoffeeDto.flavors && (
             await Promise.all(updateCoffeeDto.flavors.map(name => this.preloadFlavorByName(name)))
         );
-  
+
         const coffee = await this.coffeeRepository.preload({
             id: +id,
             ...updateCoffeeDto,
@@ -72,20 +72,20 @@ export class CoffeesService {
 
     async recommendCoffee(coffee: Coffee) {
         const queryRunner = this.connection.createQueryRunner();
-        
+
         await queryRunner.connect();
-        await queryRunner.startTransaction(); 
+        await queryRunner.startTransaction();
         try {
             coffee.recommendations++;
-            
+
             const recommendEvent = new Event();
             recommendEvent.name = 'recommend_coffee';
             recommendEvent.type = 'coffee';
             recommendEvent.payload = { coffeeId: coffee.id };
-            
-            await queryRunner.manager.save(coffee); 
+
+            await queryRunner.manager.save(coffee);
             await queryRunner.manager.save(recommendEvent);
-            
+
             await queryRunner.commitTransaction();
         } catch (err) {
             await queryRunner.rollbackTransaction();
@@ -99,7 +99,7 @@ export class CoffeesService {
         if (existingFlavor) {
            return existingFlavor;
         }
-        
+
         return this.flavorRepository.create({ name });
     }
 }
