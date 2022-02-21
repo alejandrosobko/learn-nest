@@ -1,12 +1,12 @@
 [Nest](https://github.com/nestjs/nest)
 
-## Installation
+## Instalación
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## Correr la app
 
 ```bash
 # development
@@ -34,10 +34,7 @@ $ npm run test:cov
 
 ---
 
-## Notas propias
-
-
-NestJS
+## NestJS
 
 Es un framework basado en Express que te permite generar un proyecto limpio y bien armado. Sigue la regla de *convention-over-configuration*.
 
@@ -68,3 +65,6 @@ La idea de injección de dependencias sigue la técnica [inversion of control (I
 
 [Info 2 - post de Medium](https://medium.com/geekculture/nestjs-and-dependency-injection-3ce0886148c4)
 
+### Testing
+
+[Info](https://docs.nestjs.com/fundamentals/testing)
